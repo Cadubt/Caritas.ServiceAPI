@@ -4,7 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using Caritas.ServiceAPI.Context;
 using Caritas.ServiceAPI.Helper;
-using Caritas.ServiceAPI.Models;
 using Caritas.ServiceAPI.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,28 +11,28 @@ namespace Caritas.ServiceAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UserController : Controller
+    public class ShelteredController : Controller
     {
-        private readonly IUserService _userService;
+        private readonly IShelteredService _sheltService;
 
         public readonly CaritasContext _context;
 
-        public UserController(CaritasContext context, IUserService userService)
+        public ShelteredController(CaritasContext context, IShelteredService shelteredService)
         {
             _context = context;
-            _userService = userService;
+            _sheltService = shelteredService;
         }
 
         /// <summary>
-        /// Responsible to get a list of all registered Users
+        /// Responsible to get a list of all registered Sheltereds
         /// </summary>
         /// <returns></returns>
-        [HttpGet("ListUsers")]
+        [HttpGet("ListSheltereds")]
         public async Task<IActionResult> List()
         {
             try
             {
-                return HttpResponse.Send(true, 200, await _userService.List());
+                return HttpResponse.Send(true, 200, await _sheltService.List());
             }
             catch (AppException ex)
             {

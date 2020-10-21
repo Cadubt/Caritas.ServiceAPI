@@ -13,10 +13,10 @@ namespace Caritas.ServiceAPI.Context
             : base(options) { }
 
         public DbSet<UserModel> Users { get; set; }
-        //public DbSet<Sheltered> Sheltereds { get; set; }
-        //public DbSet<Responsible> Responsibles { get; set; }
-        //public DbSet<Kinship> Kinships { get; set; }
-        //public DbSet<ScheduleSheet> ScheduleSheets { get; set; }
+        public DbSet<ShelteredModel> Sheltereds { get; set; }
+        public DbSet<ResponsibleModel> Responsibles { get; set; }
+        public DbSet<KinshipModel> Kinships { get; set; }
+        public DbSet<ScheduleSheetModel> ScheduleSheets { get; set; }
 
 
 
@@ -24,10 +24,10 @@ namespace Caritas.ServiceAPI.Context
         {
             //Configure default schema
             modelBuilder.Entity<UserModel>().ToTable("Users", "usr");
-            //modelBuilder.Entity<Kinship>().ToTable("Kinships", "shelt");
-            //modelBuilder.Entity<Responsible>().ToTable("Responsibles", "shelt");
-            //modelBuilder.Entity<Sheltered>().ToTable("Sheltereds", "shelt");
-            //modelBuilder.Entity<ScheduleSheet>().ToTable("ScheduleSheets", "shelt");
+            modelBuilder.Entity<KinshipModel>().ToTable("Kinships", "shelt");
+            modelBuilder.Entity<ResponsibleModel>().ToTable("Responsibles", "shelt");
+            modelBuilder.Entity<ShelteredModel>().ToTable("Sheltereds", "shelt");
+            modelBuilder.Entity<ScheduleSheetModel>().ToTable("ScheduleSheets", "shelt");
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) { }

@@ -5,13 +5,13 @@ using System.Threading.Tasks;
 
 namespace Caritas.ServiceAPI.Models
 {
-    public class UserModel
+    public class ResponsibleModel
     {
         public int Id { get; set; }
-        public string Name { get; set; }
-        public string Password { get; set; }
-        public string Email { get; set; }
-        public int Role { get; set; }
+        public string ResponsibleName { get; set; }
+        public string Address { get; set; }
+        public string Phone { get; set; }
+        public string KinshipId { get; set; }
         public DateTime? CreatedAt { get; set; }
         public DateTime? DeletedAt { get; set; }
 

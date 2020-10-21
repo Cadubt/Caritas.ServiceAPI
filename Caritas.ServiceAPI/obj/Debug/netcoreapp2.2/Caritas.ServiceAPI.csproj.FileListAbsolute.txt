@@ -1,3 +1,8 @@
+C:\Projetos\Bezerra De Menezes\Caritas.ServiceAPI\Caritas.ServiceAPI\obj\Debug\netcoreapp2.2\Caritas.ServiceAPI.csproj.CoreCompileInputs.cache
+C:\Projetos\Bezerra De Menezes\Caritas.ServiceAPI\Caritas.ServiceAPI\obj\Debug\netcoreapp2.2\Caritas.ServiceAPI.RazorAssemblyInfo.cache
+C:\Projetos\Bezerra De Menezes\Caritas.ServiceAPI\Caritas.ServiceAPI\obj\Debug\netcoreapp2.2\Caritas.ServiceAPI.RazorAssemblyInfo.cs
+C:\Projetos\Bezerra De Menezes\Caritas.ServiceAPI\Caritas.ServiceAPI\obj\Debug\netcoreapp2.2\Caritas.ServiceAPI.AssemblyInfoInputs.cache
+C:\Projetos\Bezerra De Menezes\Caritas.ServiceAPI\Caritas.ServiceAPI\obj\Debug\netcoreapp2.2\Caritas.ServiceAPI.AssemblyInfo.cs
 C:\Projetos\Bezerra De Menezes\Caritas.ServiceAPI\Caritas.ServiceAPI\bin\Debug\netcoreapp2.2\appsettings.Development.json
 C:\Projetos\Bezerra De Menezes\Caritas.ServiceAPI\Caritas.ServiceAPI\bin\Debug\netcoreapp2.2\appsettings.json
 C:\Projetos\Bezerra De Menezes\Caritas.ServiceAPI\Caritas.ServiceAPI\bin\Debug\netcoreapp2.2\Properties\launchSettings.json
@@ -5,14 +10,8 @@ C:\Projetos\Bezerra De Menezes\Caritas.ServiceAPI\Caritas.ServiceAPI\bin\Debug\n
 C:\Projetos\Bezerra De Menezes\Caritas.ServiceAPI\Caritas.ServiceAPI\bin\Debug\netcoreapp2.2\Caritas.ServiceAPI.runtimeconfig.json
 C:\Projetos\Bezerra De Menezes\Caritas.ServiceAPI\Caritas.ServiceAPI\bin\Debug\netcoreapp2.2\Caritas.ServiceAPI.runtimeconfig.dev.json
 C:\Projetos\Bezerra De Menezes\Caritas.ServiceAPI\Caritas.ServiceAPI\bin\Debug\netcoreapp2.2\Caritas.ServiceAPI.dll
-C:\Projetos\Bezerra De Menezes\Caritas.ServiceAPI\Caritas.ServiceAPI\obj\Debug\netcoreapp2.2\Caritas.ServiceAPI.csprojAssemblyReference.cache
-C:\Projetos\Bezerra De Menezes\Caritas.ServiceAPI\Caritas.ServiceAPI\obj\Debug\netcoreapp2.2\Caritas.ServiceAPI.RazorAssemblyInfo.cache
-C:\Projetos\Bezerra De Menezes\Caritas.ServiceAPI\Caritas.ServiceAPI\obj\Debug\netcoreapp2.2\Caritas.ServiceAPI.RazorAssemblyInfo.cs
-C:\Projetos\Bezerra De Menezes\Caritas.ServiceAPI\Caritas.ServiceAPI\obj\Debug\netcoreapp2.2\Caritas.ServiceAPI.AssemblyInfoInputs.cache
-C:\Projetos\Bezerra De Menezes\Caritas.ServiceAPI\Caritas.ServiceAPI\obj\Debug\netcoreapp2.2\Caritas.ServiceAPI.AssemblyInfo.cs
-C:\Projetos\Bezerra De Menezes\Caritas.ServiceAPI\Caritas.ServiceAPI\obj\Debug\netcoreapp2.2\Caritas.ServiceAPI.RazorTargetAssemblyInfo.cache
-C:\Projetos\Bezerra De Menezes\Caritas.ServiceAPI\Caritas.ServiceAPI\obj\Debug\netcoreapp2.2\Caritas.ServiceAPI.genruntimeconfig.cache
 C:\Projetos\Bezerra De Menezes\Caritas.ServiceAPI\Caritas.ServiceAPI\bin\Debug\netcoreapp2.2\Caritas.ServiceAPI.pdb
+C:\Projetos\Bezerra De Menezes\Caritas.ServiceAPI\Caritas.ServiceAPI\obj\Debug\netcoreapp2.2\Caritas.ServiceAPI.RazorTargetAssemblyInfo.cache
 C:\Projetos\Bezerra De Menezes\Caritas.ServiceAPI\Caritas.ServiceAPI\obj\Debug\netcoreapp2.2\Caritas.ServiceAPI.dll
 C:\Projetos\Bezerra De Menezes\Caritas.ServiceAPI\Caritas.ServiceAPI\obj\Debug\netcoreapp2.2\Caritas.ServiceAPI.pdb
-C:\Projetos\Bezerra De Menezes\Caritas.ServiceAPI\Caritas.ServiceAPI\obj\Debug\netcoreapp2.2\Caritas.ServiceAPI.csproj.CoreCompileInputs.cache
+C:\Projetos\Bezerra De Menezes\Caritas.ServiceAPI\Caritas.ServiceAPI\obj\Debug\netcoreapp2.2\Caritas.ServiceAPI.genruntimeconfig.cache
