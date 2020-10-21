@@ -5,8 +5,10 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using Caritas.ServiceAPI.Context;
-using Caritas.ServiceAPI.Interface;
+using Caritas.ServiceAPI.Repositories;
+using Caritas.ServiceAPI.Repositories.Interfaces;
 using Caritas.ServiceAPI.Services;
+using Caritas.ServiceAPI.Services.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -38,20 +40,22 @@ namespace Caritas.ServiceAPI
 
             //Services
             services.AddScoped<IUserService, UserService>();
+            //Repositories
+            services.AddScoped<IUserRepository, UserRepository>();
 
             services.AddSwaggerGen(c =>
             {
                 //Swagger Documentation properties
                 c.SwaggerDoc("v1", new OpenApiInfo
                 {
-                    Title = "SigQuest API",
+                    Title = "Caritas API",
                     Version = "v1",
-                    Description = "Web API | Projeto SigQuest",
+                    Description = "Web API | Cáritas Gestão de Acolhidos",
                     TermsOfService = new Uri("https://example.com/terms"),
                     Contact = new OpenApiContact
                     {
-                        Name = "Pedro SigQuest",
-                        Email = "Pedro@sigquest.com.br",
+                        Name = "Cadu Torres",
+                        Email = "cadubt@gmail.com",
                         Url = new Uri("https://google.com"),
                     },
                     License = new OpenApiLicense
@@ -61,37 +65,7 @@ namespace Caritas.ServiceAPI
                     }
                 });
 
-                //Makes the swagger obtain the XML document summaries
-                //var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
-                //var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
-                //c.IncludeXmlComments(xmlPath);
-
-                //var security = new Dictionary<string, IEnumerable<string>>
-                //{
-                //    {"Bearer", new string[] { }},
-                //};
-
-                //c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
-                //{
-                //    Description = "JWT Authoriazation header using the bearer scheme",
-                //    Name = "Authorization",
-                //    In = ParameterLocation.Header,
-                //    Type = SecuritySchemeType.ApiKey
-                //});
-
-                //c.AddSecurityRequirement(new OpenApiSecurityRequirement {
-                //{
-                //    new OpenApiSecurityScheme
-                //    {
-                //    Reference = new OpenApiReference
-                //        {
-                //            Type = ReferenceType.SecurityScheme,
-                //            Id = "Bearer"
-                //        }
-                //    },
-                //    new string[] { }
-                //    }
-                //});
+                
 
             });
 
