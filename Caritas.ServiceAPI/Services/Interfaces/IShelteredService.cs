@@ -8,6 +8,13 @@ namespace Caritas.ServiceAPI.Services.Interfaces
 {
     public interface IShelteredService
     {
-        Task<List<ShelteredModel>> List();
+        
+        Task<bool> Create(ShelteredModel sheltered);
+        Task<bool> Update(ShelteredModel sheltered);
+        Task<bool> Delete(int Id);
+        Task<ShelteredModel> Find(int Id);
+        Task<List<ShelteredModel>> List(bool aliveOnly, bool activeOnly);
+        
+
     }
 }
