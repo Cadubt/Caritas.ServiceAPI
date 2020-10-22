@@ -1,8 +1,10 @@
 ﻿using Caritas.ServiceAPI.Context;
 using Caritas.ServiceAPI.Helper;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 
 namespace Caritas.ServiceAPI.Repositories
@@ -26,40 +28,40 @@ namespace Caritas.ServiceAPI.Repositories
             try
             {
                 #region O que eu Faria ao invez de Deletar [Descomentar]
-                //Type entityType = entity.GetType();
+                Type entityType = entity.GetType();
 
-                //if (entityType.GetProperty("DeletedAt") == null)
-                //{
-                //    throw new AppException("The entity has no DeletedAt property");
-                //}
-                //else
-                //{
-                //    PropertyInfo deletedAt = entityType.GetProperty("DeletedAt");
-                //    deletedAt.SetValue(entity, DateTime.UtcNow);
-                //}
+                if (entityType.GetProperty("DeletedAt") == null)
+                {
+                    throw new AppException("The entity has no DeletedAt property");
+                }
+                else
+                {
+                    PropertyInfo deletedAt = entityType.GetProperty("DeletedAt");
+                    deletedAt.SetValue(entity, DateTime.UtcNow);
+                }
 
-                //db.Update(entity);
-                //db.Entry(entity).State = EntityState.Modified;
+                db.Update(entity);
+                db.Entry(entity).State = EntityState.Modified;
 
-                //if (entityType.GetProperty("CreatedAt") != null)
-                //{
-                //    db.Entry(entity).Property(entityType.GetProperty("CreatedAt").Name).IsModified = false;
-                //}
+                if (entityType.GetProperty("CreatedAt") != null)
+                {
+                    db.Entry(entity).Property(entityType.GetProperty("CreatedAt").Name).IsModified = false;
+                }
 
-                //if (entityType.GetProperty("UpdatedAt") != null)
-                //{
-                //    db.Entry(entity).Property(entityType.GetProperty("UpdatedAt").Name).IsModified = false;
-                //}
+                if (entityType.GetProperty("UpdatedAt") != null)
+                {
+                    db.Entry(entity).Property(entityType.GetProperty("UpdatedAt").Name).IsModified = false;
+                }
 
-                //return entity;
+                return entity;
                 #endregion
 
                 #region Como foi pedido
 
-                db.Remove(entity);
-                db.SaveChanges();
+                //db.Remove(entity);
+                //db.SaveChanges();
 
-                return entity;
+                //return entity;
 
                 #endregion
             }

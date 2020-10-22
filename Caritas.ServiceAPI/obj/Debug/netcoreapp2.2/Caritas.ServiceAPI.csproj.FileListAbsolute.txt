@@ -15,3 +15,4 @@ C:\Projetos\Bezerra De Menezes\Caritas.ServiceAPI\Caritas.ServiceAPI\obj\Debug\n
 C:\Projetos\Bezerra De Menezes\Caritas.ServiceAPI\Caritas.ServiceAPI\obj\Debug\netcoreapp2.2\Caritas.ServiceAPI.dll
 C:\Projetos\Bezerra De Menezes\Caritas.ServiceAPI\Caritas.ServiceAPI\obj\Debug\netcoreapp2.2\Caritas.ServiceAPI.pdb
 C:\Projetos\Bezerra De Menezes\Caritas.ServiceAPI\Caritas.ServiceAPI\obj\Debug\netcoreapp2.2\Caritas.ServiceAPI.genruntimeconfig.cache
+C:\Projetos\Bezerra De Menezes\Caritas.ServiceAPI\Caritas.ServiceAPI\obj\Debug\netcoreapp2.2\Caritas.ServiceAPI.csprojAssemblyReference.cache
