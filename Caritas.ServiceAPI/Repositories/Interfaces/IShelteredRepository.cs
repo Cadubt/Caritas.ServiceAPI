@@ -1,4 +1,4 @@
-﻿using Caritas.ServiceAPI.Models;
+﻿using Caritas.ServiceAPI.Context.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,12 +8,12 @@ namespace Caritas.ServiceAPI.Repositories.Interfaces
 {
     public interface IShelteredRepository
     {
-        Task Add(ShelteredModel sheltered);
-        Task<List<ShelteredModel>> List();
+        Task Add(Sheltered sheltered);
+        Task<List<Sheltered>> List(int status);
         Task<int> Commit();
-        void Update(ShelteredModel sheltered);
-        Task<ShelteredModel> FindShelteredToUpdate(int id);
-        Task<ShelteredModel> FindShelteredAsync(int id);
+        void Update(Sheltered sheltered);
+        Task<Sheltered> FindShelteredToUpdate(int id);
+        Task<Sheltered> FindShelteredAsync(int id);
         Entity SoftDelete<Entity>(Entity entity) where Entity : class;
     }
 }
