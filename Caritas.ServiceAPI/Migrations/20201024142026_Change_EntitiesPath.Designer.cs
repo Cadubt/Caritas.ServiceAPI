@@ -4,14 +4,16 @@ using Caritas.ServiceAPI.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Caritas.ServiceAPI.Migrations
 {
     [DbContext(typeof(CaritasContext))]
-    partial class CaritasContextModelSnapshot : ModelSnapshot
+    [Migration("20201024142026_Change_EntitiesPath")]
+    partial class Change_EntitiesPath
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -127,19 +129,6 @@ namespace Caritas.ServiceAPI.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Sheltereds","shelt");
-                });
-
-            modelBuilder.Entity("Caritas.ServiceAPI.Context.Entities.Status", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Name");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Statuses","shelt");
                 });
 
             modelBuilder.Entity("Caritas.ServiceAPI.Context.Entities.User", b =>

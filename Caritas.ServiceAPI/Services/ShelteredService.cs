@@ -1,5 +1,5 @@
-﻿using Caritas.ServiceAPI.Helper;
-using Caritas.ServiceAPI.Models;
+﻿using Caritas.ServiceAPI.Context.Entities;
+using Caritas.ServiceAPI.Helper;
 using Caritas.ServiceAPI.Repositories.Interfaces;
 using Caritas.ServiceAPI.Services.Interfaces;
 using Microsoft.Extensions.Configuration;
@@ -21,7 +21,7 @@ namespace Caritas.ServiceAPI.Services
             _config = config;
         }
         
-        public async Task<bool> Create(ShelteredModel sheltered)
+        public async Task<bool> Create(Sheltered sheltered)
         {
             try
             {
@@ -39,7 +39,7 @@ namespace Caritas.ServiceAPI.Services
             }
         }
 
-        public async Task<bool> Update(ShelteredModel sheltered)
+        public async Task<bool> Update(Sheltered sheltered)
         {
             try
             {
@@ -59,23 +59,23 @@ namespace Caritas.ServiceAPI.Services
 
         public async Task<bool> Delete(int Id)
         {
-            ShelteredModel sheltered = await _sheltRepo.FindShelteredAsync(Id);
+            Sheltered sheltered = await _sheltRepo.FindShelteredAsync(Id);
 
-            _sheltRepo.SoftDelete<ShelteredModel>(sheltered);
+            _sheltRepo.SoftDelete<Sheltered>(sheltered);
 
             return await _sheltRepo.Commit() > 0;
         }
 
-        public Task<ShelteredModel> Find(int Id)
+        public Task<Sheltered> Find(int Id)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<List<ShelteredModel>> List(bool aliveOnly, bool activeOnly)
+        public async Task<List<Sheltered>> List(int status)
         {
-            List<ShelteredModel> s = new List<ShelteredModel>();
-            s = await _sheltRepo.List();
-            return s;
+            List<Sheltered> sheltereds = new List<Sheltered>();
+            sheltereds = await _sheltRepo.List(status);
+            return sheltereds;
         }
 
     }

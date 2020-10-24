@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Caritas.ServiceAPI.Models
+namespace Caritas.ServiceAPI.Context.Entities
 {
-    public class ShelteredModel
+    public class Sheltered
     {
         public int Id { get; set; }
         public string Name { get; set; }
@@ -15,7 +15,7 @@ namespace Caritas.ServiceAPI.Models
         public string Address { get; set; }
         public string BloodTyping { get; set; }
         public DateTime EntryDate { get; set; }
-        public string PerfilImage { get; set; }        
+        public string PerfilImage { get; set; }
         public DateTime? DeceaseAt { get; set; }
         public int StatusId { get; set; }
         public DateTime? CreatedAt { get; set; }

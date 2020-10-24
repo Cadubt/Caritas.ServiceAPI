@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Caritas.ServiceAPI.Context;
+using Caritas.ServiceAPI.Context.Entities;
 using Caritas.ServiceAPI.Helper;
 using Caritas.ServiceAPI.Models;
 using Caritas.ServiceAPI.Services.Interfaces;
@@ -25,9 +26,13 @@ namespace Caritas.ServiceAPI.Controllers
             _sheltService = shelteredService;
         }
 
-
+        /// <summary>
+        /// Responsible for create a Sheltered
+        /// </summary>
+        /// <param name="sheltered"></param>
+        /// <returns></returns>
         [HttpPost("Create")]
-        public async Task<IActionResult> Create(ShelteredModel sheltered)
+        public async Task<IActionResult> Create(Sheltered sheltered)
         {
             try
             {
@@ -44,8 +49,13 @@ namespace Caritas.ServiceAPI.Controllers
             }
         }
 
+        /// <summary>
+        /// Responsible for Update a Sheltered
+        /// </summary>
+        /// <param name="sheltered"></param>
+        /// <returns></returns>
         [HttpPut("Update")]
-        public async Task<IActionResult> Update(ShelteredModel sheltered)
+        public async Task<IActionResult> Update(Sheltered sheltered)
         {
             try
             {
@@ -62,6 +72,11 @@ namespace Caritas.ServiceAPI.Controllers
             }
         }
 
+        /// <summary>
+        /// Responsible for Update a Sheltered with a Inactive Status
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpDelete]
         public async Task<IActionResult> Delete(int id)
         {
@@ -91,15 +106,16 @@ namespace Caritas.ServiceAPI.Controllers
         }
 
         /// <summary>
-        /// Responsible to get a list of all registered Sheltereds
+        /// Responsible for obtaining a list of all registered shelters, with the required status.
         /// </summary>
+        /// <param name="statusId">1 Active|2 Pending|3 Deceased</param>
         /// <returns></returns>
         [HttpGet("ListSheltereds")]
-        public async Task<IActionResult> List(bool aliveOnly, bool activeOnly)
+        public async Task<IActionResult> List(int statusId)
         {
             try
             {
-                return HttpResponse.Send(true, 200, await _sheltService.List(aliveOnly, activeOnly));
+                return HttpResponse.Send(true, 200, await _sheltService.List(statusId));
             }
             catch (AppException ex)
             {
