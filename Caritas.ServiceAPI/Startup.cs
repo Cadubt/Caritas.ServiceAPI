@@ -37,7 +37,7 @@ namespace Caritas.ServiceAPI
             {
                 option.UseSqlServer(Configuration.GetConnectionString("CaritasDev"));
             });
-
+            
             //Services
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IShelteredService, ShelteredService>();
@@ -72,6 +72,7 @@ namespace Caritas.ServiceAPI
             });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvc(options => options.EnableEndpointRouting = false);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
