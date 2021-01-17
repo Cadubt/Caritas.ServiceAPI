@@ -9,6 +9,11 @@
     <DocumentationFile></DocumentationFile>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Migrations\20210117002513_Including_Menu_Orientation.cs" />
+    <Compile Remove="Migrations\20210117002513_Including_Menu_Orientation.Designer.cs" />
+  </ItemGroup>
+
   
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
