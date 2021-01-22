@@ -48,5 +48,23 @@ namespace Caritas.ServiceAPI.Controllers
                 return HttpResponse.Send(false, ex.Code, null, ex.Message);
             }
         }
+
+        /// <summary>
+        /// Responsible to return a list of Schadules
+        /// </summary>
+        /// <param name="statusId"></param>
+        /// <returns></returns>
+        [HttpGet("ListScheduleSheet")]
+        public async Task<IActionResult> List()
+        {
+            try
+            {
+                return HttpResponse.Send(true, 200, await _scheduleSheetService.List());
+            }
+            catch (AppException ex)
+            {
+                return HttpResponse.Send(false, ex.Code, null, ex.Message);
+            }
+        }
     }
 }

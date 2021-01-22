@@ -41,9 +41,11 @@ namespace Caritas.ServiceAPI
             //Services
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IShelteredService, ShelteredService>();
+            services.AddScoped<IScheduleSheetService, ScheduleSheetService>();
             //Repositories
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IShelteredRepository, ShelteredRepository>();
+            services.AddScoped<IScheduleSheetRepository, ScheduleSheetRepository>();
 
             services.AddSwaggerGen(c =>
             {
