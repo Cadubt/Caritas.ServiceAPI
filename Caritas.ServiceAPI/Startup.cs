@@ -10,6 +10,7 @@ using Caritas.ServiceAPI.Repositories.Interfaces;
 using Caritas.ServiceAPI.Services;
 using Caritas.ServiceAPI.Services.Interfaces;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Cors.Infrastructure;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -18,6 +19,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
+using Microsoft.AspNetCore.Cors;
 
 namespace Caritas.ServiceAPI
 {
@@ -37,7 +39,8 @@ namespace Caritas.ServiceAPI
             {
                 option.UseSqlServer(Configuration.GetConnectionString("CaritasDev"));
             });
-            
+
+
             //Services
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IShelteredService, ShelteredService>();
@@ -71,10 +74,12 @@ namespace Caritas.ServiceAPI
                     }
                 });
 
-                
+
 
             });
 
+
+            services.AddCors();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddMvc(options => options.EnableEndpointRouting = false);
         }
@@ -93,7 +98,11 @@ namespace Caritas.ServiceAPI
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "REST API Authentication V1");
             });
 
+            app.UseCors(
+                options => options.WithOrigins("http://localhost:4200", "http://caritas.cadubt.com.br").AllowAnyMethod()
+            );
             app.UseMvc();
+
         }
     }
 }
