@@ -12,8 +12,25 @@ pool:
 variables:
   solution: '**/*.sln'
   buildPlataform: 'Any CPU'
+  SolutionPath: 'Caritas.ServiceAPI/Caritas.ServiceAPI.sln'
   buildConfiguration: 'Release'
 
 steps:
-- script: dotnet build --configuration $(buildConfiguration)
-  displayName: 'dotnet build $(buildConfiguration)'
+  
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet publish'
+  inputs:
+    command: 'publish'
+    publishWebProjects: false
+    projects: '**/*.csproj'
+    
+- task: FtpUpload@2
+  displayName: 'FTP Upload'
+  inputs:
+    credentialsOption: inputs
+    serverUrl: 'ftp://cadubt.com.br'
+    username: cadubt
+    password: 00caduzice
+    rootDirectory: '$(Build.SourcesDirectory)'
+    remoteDirectory: '/www/api-caritas/'
+    trustSSL: true
