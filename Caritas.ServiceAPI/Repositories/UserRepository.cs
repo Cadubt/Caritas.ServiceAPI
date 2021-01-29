@@ -1,5 +1,5 @@
 ﻿using Caritas.ServiceAPI.Context;
-using Caritas.ServiceAPI.Models;
+using Caritas.ServiceAPI.Context.Entities;
 using Caritas.ServiceAPI.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -13,7 +13,7 @@ namespace Caritas.ServiceAPI.Repositories
     {
         public UserRepository(CaritasContext db) : base(db) { }
 
-        public async Task<List<UserModel>> List()
+        public async Task<List<User>> List()
         {            
             return await db.Users.AsNoTracking().ToListAsync(); ;
         }

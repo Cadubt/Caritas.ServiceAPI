@@ -15,11 +15,11 @@ namespace Caritas.ServiceAPI.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.2.6-servicing-10079")
+                .HasAnnotation("ProductVersion", "2.2.0-rtm-35687")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Caritas.ServiceAPI.Models.KinshipModel", b =>
+            modelBuilder.Entity("Caritas.ServiceAPI.Context.Entities.Kinship", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -32,7 +32,56 @@ namespace Caritas.ServiceAPI.Migrations
                     b.ToTable("Kinships","shelt");
                 });
 
-            modelBuilder.Entity("Caritas.ServiceAPI.Models.ResponsibleModel", b =>
+            modelBuilder.Entity("Caritas.ServiceAPI.Context.Entities.Menu", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("MenuIcon");
+
+                    b.Property<string>("MenuTittle");
+
+                    b.Property<string>("PageName");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Menus","usr");
+                });
+
+            modelBuilder.Entity("Caritas.ServiceAPI.Context.Entities.Permission", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("PermissionName");
+
+                    b.Property<bool>("PermissionStatus");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Permissions","usr");
+                });
+
+            modelBuilder.Entity("Caritas.ServiceAPI.Context.Entities.Permission_Menu", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<bool>("Authorization");
+
+                    b.Property<int>("MenuId");
+
+                    b.Property<int>("PermissionId");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Permission_Menus","usr");
+                });
+
+            modelBuilder.Entity("Caritas.ServiceAPI.Context.Entities.Responsible", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -55,7 +104,7 @@ namespace Caritas.ServiceAPI.Migrations
                     b.ToTable("Responsibles","shelt");
                 });
 
-            modelBuilder.Entity("Caritas.ServiceAPI.Models.ScheduleSheetModel", b =>
+            modelBuilder.Entity("Caritas.ServiceAPI.Context.Entities.ScheduleSheet", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -94,7 +143,7 @@ namespace Caritas.ServiceAPI.Migrations
                     b.ToTable("ScheduleSheets","shelt");
                 });
 
-            modelBuilder.Entity("Caritas.ServiceAPI.Models.ShelteredModel", b =>
+            modelBuilder.Entity("Caritas.ServiceAPI.Context.Entities.Sheltered", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -110,6 +159,8 @@ namespace Caritas.ServiceAPI.Migrations
 
                     b.Property<DateTime?>("CreatedAt");
 
+                    b.Property<DateTime?>("DeceaseAt");
+
                     b.Property<DateTime?>("DeletedAt");
 
                     b.Property<DateTime>("EntryDate");
@@ -120,12 +171,27 @@ namespace Caritas.ServiceAPI.Migrations
 
                     b.Property<string>("Phone");
 
+                    b.Property<int>("StatusId");
+
                     b.HasKey("Id");
 
                     b.ToTable("Sheltereds","shelt");
                 });
 
-            modelBuilder.Entity("Caritas.ServiceAPI.Models.UserModel", b =>
+            modelBuilder.Entity("Caritas.ServiceAPI.Context.Entities.Status", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Statuses","shelt");
+                });
+
+            modelBuilder.Entity("Caritas.ServiceAPI.Context.Entities.User", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()

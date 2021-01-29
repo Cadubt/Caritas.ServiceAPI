@@ -7,9 +7,11 @@ trigger:
 - dev
 
 pool:
-  vmImage: 'ubuntu-latest'
+  vmImage: 'windows-latest'
 
 variables:
+  solution: '**/*.sln'
+  buildPlataform: 'Any CPU'
   buildConfiguration: 'Release'
 
 steps:

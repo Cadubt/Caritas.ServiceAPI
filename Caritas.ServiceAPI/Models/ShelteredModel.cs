@@ -15,9 +15,10 @@ namespace Caritas.ServiceAPI.Models
         public string Address { get; set; }
         public string BloodTyping { get; set; }
         public DateTime EntryDate { get; set; }
-        public string PerfilImage { get; set; }
+        public string PerfilImage { get; set; }        
+        public DateTime? DeceaseAt { get; set; }
+        public int StatusId { get; set; }
         public DateTime? CreatedAt { get; set; }
         public DateTime? DeletedAt { get; set; }
-
     }
 }

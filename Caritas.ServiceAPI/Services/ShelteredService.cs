@@ -1,4 +1,5 @@
-﻿using Caritas.ServiceAPI.Models;
+﻿using Caritas.ServiceAPI.Context.Entities;
+using Caritas.ServiceAPI.Helper;
 using Caritas.ServiceAPI.Repositories.Interfaces;
 using Caritas.ServiceAPI.Services.Interfaces;
 using Microsoft.Extensions.Configuration;
@@ -19,12 +20,63 @@ namespace Caritas.ServiceAPI.Services
             _sheltRepo = sheltRepo;
             _config = config;
         }
-
-        public async Task<List<ShelteredModel>> List()
+        
+        public async Task<bool> Create(Sheltered sheltered)
         {
-            List<ShelteredModel> s = new List<ShelteredModel>();
-            s = await _sheltRepo.List();
-            return s;
+            try
+            {
+                await _sheltRepo.Add(sheltered);
+                int changed = await _sheltRepo.Commit();
+
+                if (changed > 0)
+                    return true;
+
+                return false;
+            }
+            catch (AppException ex)
+            {
+                throw new AppException(ex.Message, ex.Code);
+            }
         }
+
+        public async Task<bool> Update(Sheltered sheltered)
+        {
+            try
+            {
+                _sheltRepo.Update(sheltered);
+                int changed = await _sheltRepo.Commit();
+
+                if (changed > 0)
+                    return true;
+
+                return false;
+            }
+            catch (AppException ex)
+            {
+                throw new AppException(ex.Message, ex.Code);
+            }
+        }
+
+        public async Task<bool> Delete(int Id)
+        {
+            Sheltered sheltered = await _sheltRepo.FindShelteredAsync(Id);
+
+            _sheltRepo.SoftDelete<Sheltered>(sheltered);
+
+            return await _sheltRepo.Commit() > 0;
+        }
+
+        public Task<Sheltered> Find(int Id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<List<Sheltered>> List(int status)
+        {
+            List<Sheltered> sheltereds = new List<Sheltered>();
+            sheltereds = await _sheltRepo.List(status);
+            return sheltereds;
+        }
+
     }
 }
