@@ -1,4 +1,4 @@
-﻿using Caritas.ServiceAPI.Models;
+﻿using Caritas.ServiceAPI.Context.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +8,13 @@ namespace Caritas.ServiceAPI.Services.Interfaces
 {
     public interface IShelteredService
     {
-        Task<List<ShelteredModel>> List();
+        
+        Task<bool> Create(Sheltered sheltered);
+        Task<bool> Update(Sheltered sheltered);
+        Task<bool> Delete(int Id);
+        Task<Sheltered> Find(int Id);
+        Task<List<Sheltered>> List(int status);
+        
+
     }
 }

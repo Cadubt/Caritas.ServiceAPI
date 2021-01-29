@@ -1,4 +1,5 @@
 ﻿using Caritas.ServiceAPI.Context;
+using Caritas.ServiceAPI.Context.Entities;
 using Caritas.ServiceAPI.Models;
 using Caritas.ServiceAPI.Repositories.Interfaces;
 using Caritas.ServiceAPI.Services.Interfaces;
@@ -22,9 +23,9 @@ namespace Caritas.ServiceAPI.Services
             _config = config;
         }
 
-        public async Task<List<UserModel>> List()
+        public async Task<List<User>> List()
         {
-            List<UserModel> u = new List<UserModel>();
+            List<User> u = new List<User>();
             u = await _userRepo.List();
             return u;
         }
