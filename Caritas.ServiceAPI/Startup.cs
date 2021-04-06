@@ -46,11 +46,13 @@ namespace Caritas.ServiceAPI
             services.AddScoped<IShelteredService, ShelteredService>();
             services.AddScoped<IScheduleSheetService, ScheduleSheetService>();
             services.AddScoped<IMenuService, MenuService>();
+            services.AddScoped<IVisitorService, VisitorService>();
             //Repositories
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IShelteredRepository, ShelteredRepository>();
             services.AddScoped<IScheduleSheetRepository, ScheduleSheetRepository>();
             services.AddScoped<IMenuRepository, MenuRepository>();
+            services.AddScoped<IVisitorRepository, VisitorRepository>();
 
             services.AddSwaggerGen(c =>
             {
@@ -92,15 +94,19 @@ namespace Caritas.ServiceAPI
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseCors(builder => builder.AllowAnyHeader()
+                .AllowAnyMethod()
+                .AllowAnyOrigin());
+
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "REST API Authentication V1");
             });
 
-            app.UseCors(
-                options => options.WithOrigins("http://localhost:4200", "http://caritas.cadubt.com.br").AllowAnyMethod()
-            );
+            //app.UseCors(
+            //    options => options.WithOrigins("http://localhost:4200", "http://caritas.cadubt.com.br").AllowAnyMethod()
+            //);
             app.UseMvc();
 
         }

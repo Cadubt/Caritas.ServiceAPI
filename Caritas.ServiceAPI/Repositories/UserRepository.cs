@@ -14,8 +14,8 @@ namespace Caritas.ServiceAPI.Repositories
         public UserRepository(CaritasContext db) : base(db) { }
 
         public async Task<List<User>> List()
-        {            
-            return await db.Users.AsNoTracking().ToListAsync(); ;
+        {
+            return await db.Users.AsNoTracking().ToListAsync();
         }
     }
 }

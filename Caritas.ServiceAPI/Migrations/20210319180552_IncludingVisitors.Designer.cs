@@ -4,14 +4,16 @@ using Caritas.ServiceAPI.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Caritas.ServiceAPI.Migrations
 {
     [DbContext(typeof(CaritasContext))]
-    partial class CaritasContextModelSnapshot : ModelSnapshot
+    [Migration("20210319180552_IncludingVisitors")]
+    partial class IncludingVisitors
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -231,8 +233,6 @@ namespace Caritas.ServiceAPI.Migrations
                     b.Property<string>("RG");
 
                     b.Property<int>("ShelteredId");
-
-                    b.Property<DateTime>("VisitDate");
 
                     b.HasKey("Id");
 
