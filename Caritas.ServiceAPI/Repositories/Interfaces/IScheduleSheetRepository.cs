@@ -9,5 +9,7 @@ namespace Caritas.ServiceAPI.Repositories.Interfaces
     public interface IScheduleSheetRepository
     {
         Task<List<ScheduleSheet>> List();
+        Task Add(ScheduleSheet sheltered);
+        Task<int> Commit();
     }
 }

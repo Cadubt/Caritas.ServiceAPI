@@ -9,5 +9,7 @@ namespace Caritas.ServiceAPI.Services.Interfaces
     public interface IScheduleSheetService
     {
         Task<List<ScheduleSheet>> List();
+
+        Task<bool> Create(ScheduleSheet Schedule);
     }
 }

@@ -38,7 +38,7 @@ namespace Caritas.ServiceAPI.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    return HttpResponse.Send(true, 201, null, null);
+                    return HttpResponse.Send(true, 201, _scheduleSheetService.Create(sheltered), null);
                 }
 
                 return HttpResponse.Send(true, 400, ModelState, null);
