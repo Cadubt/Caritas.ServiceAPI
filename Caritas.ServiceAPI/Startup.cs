@@ -40,6 +40,9 @@ namespace Caritas.ServiceAPI
                 option.UseSqlServer(Configuration.GetConnectionString("CaritasDev"));
             });
 
+            services.AddControllers().AddNewtonsoftJson(
+                options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+
 
             //Services
             services.AddScoped<IUserService, UserService>();
