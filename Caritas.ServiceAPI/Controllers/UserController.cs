@@ -7,6 +7,10 @@ using Caritas.ServiceAPI.Helper;
 using Caritas.ServiceAPI.Models;
 using Caritas.ServiceAPI.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
+using Caritas.ServiceAPI.Context.Entities;
+using Caritas.ServiceAPI.Services;
 
 namespace Caritas.ServiceAPI.Controllers
 {
@@ -29,6 +33,7 @@ namespace Caritas.ServiceAPI.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet("ListUsers")]
+        [Authorize]
         public async Task<IActionResult> List()
         {
             try
@@ -39,6 +44,27 @@ namespace Caritas.ServiceAPI.Controllers
             {
                 return HttpResponse.Send(false, ex.Code, null, ex.Message);
             }
+        }
+
+        [HttpPost]
+        [Route("login")]
+        [AllowAnonymous]
+        public async Task<ActionResult<dynamic>> Authenticate([FromBody]LoginModel loginModel)
+        {
+            User user = await _userService.Read(loginModel);
+
+
+            if (user == null)
+                return NotFound(new { message = "Usuário ou senha inválidos" });
+
+            var token = TokenService.GenerateToken(user);
+
+            return new 
+            { 
+                userEmail = user.Email,
+                token = token
+            };
+
         }
     }
 }

@@ -29,5 +29,12 @@ namespace Caritas.ServiceAPI.Services
             u = await _userRepo.List();
             return u;
         }
+
+        public async Task<User> Read(LoginModel loginModel)
+        {
+            User u = new User();
+            u = await _userRepo.Read(loginModel);
+            return u;
+        }
     }
 }
