@@ -10,5 +10,9 @@ namespace Caritas.ServiceAPI.Repositories.Interfaces
     {
         Task<List<Visitor>> List();
         Task<List<Visitor>> ListByDate(string visitDate);
+
+        Task Add(Visitor visitor);
+
+        Task<int> Commit();
     }
 }

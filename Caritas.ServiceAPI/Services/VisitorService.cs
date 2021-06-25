@@ -1,5 +1,6 @@
 ﻿using Caritas.ServiceAPI.Context;
 using Caritas.ServiceAPI.Context.Entities;
+using Caritas.ServiceAPI.Helper;
 using Caritas.ServiceAPI.Models;
 using Caritas.ServiceAPI.Repositories.Interfaces;
 using Caritas.ServiceAPI.Services.Interfaces;
@@ -32,6 +33,24 @@ namespace Caritas.ServiceAPI.Services
             else
                 u = await _visitorRepo.List();            
             return u;
+        }
+
+        public async Task<bool> Create(Visitor visitor)
+        {
+            try
+            {
+                await _visitorRepo.Add(visitor);
+                int changed = await _visitorRepo.Commit();
+
+                if (changed > 0)
+                    return true;
+
+                return false;
+            }
+            catch (AppException ex)
+            {
+                throw new AppException(ex.Message, ex.Code);
+            }
         }
     }
 }

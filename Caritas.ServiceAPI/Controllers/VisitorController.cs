@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Caritas.ServiceAPI.Context;
+using Caritas.ServiceAPI.Context.Entities;
 using Caritas.ServiceAPI.Helper;
 using Caritas.ServiceAPI.Models;
 using Caritas.ServiceAPI.Services.Interfaces;
@@ -34,6 +35,19 @@ namespace Caritas.ServiceAPI.Controllers
             try
             {
                 return HttpResponse.Send(true, 200, await _vistorService.List(visitDate));
+            }
+            catch (AppException ex)
+            {
+                return HttpResponse.Send(false, ex.Code, null, ex.Message);
+            }
+        }
+
+        [HttpPost("CreateVisitors")]
+        public async Task<IActionResult> Create(Visitor visitor)
+        {
+            try
+            {
+                return HttpResponse.Send(true, 200, await _vistorService.Create(visitor));
             }
             catch (AppException ex)
             {
