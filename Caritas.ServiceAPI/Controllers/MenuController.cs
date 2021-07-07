@@ -32,7 +32,7 @@ namespace Caritas.ServiceAPI.Controllers
         /// <param name="UserID"></param>
         /// <returns></returns>
         [HttpGet("ListMenu")]
-        [Authorize]
+        //[Authorize]
         public async Task<IActionResult> List(int UserID)
         {
             try

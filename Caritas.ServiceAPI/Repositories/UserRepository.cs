@@ -28,5 +28,10 @@ namespace Caritas.ServiceAPI.Repositories
                 .AsNoTracking()
                 .FirstAsync();
         }
+
+        public void Update(User user)
+        {
+            db.Users.Update(user);
+        }
     }
 }

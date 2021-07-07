@@ -33,12 +33,35 @@ namespace Caritas.ServiceAPI.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet("ListUsers")]
-        [Authorize]
+        //[Authorize]
         public async Task<IActionResult> List()
         {
             try
             {
                 return HttpResponse.Send(true, 200, await _userService.List());
+            }
+            catch (AppException ex)
+            {
+                return HttpResponse.Send(false, ex.Code, null, ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// Responsible for Update a User
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
+        [HttpPut("Update")]
+        public async Task<IActionResult> Update(User user)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    return HttpResponse.Send(true, 200, await _userService.Update(user), null);
+                }
+
+                return HttpResponse.Send(true, 400, ModelState, null);
             }
             catch (AppException ex)
             {

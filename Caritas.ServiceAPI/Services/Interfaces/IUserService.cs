@@ -13,5 +13,9 @@ namespace Caritas.ServiceAPI.Services.Interfaces
 
         Task<User> Read(LoginModel loginModel);
 
+        Task<bool> Update(User user);
+
+        Task<bool> Delete(int Id);
+
     }
 }

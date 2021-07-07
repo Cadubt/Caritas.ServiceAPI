@@ -12,5 +12,9 @@ namespace Caritas.ServiceAPI.Repositories.Interfaces
         Task<List<User>> List();
 
         Task<User> Read(LoginModel loginModel);
+
+        void Update(User user);
+
+        Task<int> Commit();
     }
 }
