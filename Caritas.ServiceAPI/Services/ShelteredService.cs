@@ -66,9 +66,11 @@ namespace Caritas.ServiceAPI.Services
             return await _sheltRepo.Commit() > 0;
         }
 
-        public Task<Sheltered> Find(int Id)
+        public async Task<Sheltered> Find(int Id)
         {
-            throw new NotImplementedException();
+            Sheltered sheltered = new Sheltered();
+            sheltered = await _sheltRepo.FindShelteredAsync(Id);
+            return sheltered;
         }
 
         public async Task<List<Sheltered>> List(int status)
