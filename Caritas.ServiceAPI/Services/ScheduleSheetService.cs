@@ -1,4 +1,5 @@
 ﻿using Caritas.ServiceAPI.Context.Entities;
+using Caritas.ServiceAPI.Helper;
 using Caritas.ServiceAPI.Repositories.Interfaces;
 using Caritas.ServiceAPI.Services.Interfaces;
 using Microsoft.Extensions.Configuration;
@@ -24,6 +25,24 @@ namespace Caritas.ServiceAPI.Services
             List<ScheduleSheet> sheltereds = new List<ScheduleSheet>();
             sheltereds = await _scheduleRepo.List();
             return sheltereds;
+        }
+
+        public async Task<bool> Create(ScheduleSheet Schedule)
+        {
+            try
+            {
+                await _scheduleRepo.Add(Schedule);
+                int changed = await _scheduleRepo.Commit();
+
+                if (changed > 0)
+                    return true;
+
+                return false;
+            }
+            catch (AppException ex)
+            {
+                throw new AppException(ex.Message, ex.Code);
+            }
         }
     }
 }

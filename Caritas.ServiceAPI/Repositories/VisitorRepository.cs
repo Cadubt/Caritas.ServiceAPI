@@ -26,5 +26,10 @@ namespace Caritas.ServiceAPI.Repositories
 
             return await visitors.AsNoTracking().ToListAsync();
         }
+
+        public async Task Add(Visitor visitor)
+        {
+            await db.Visitors.AddAsync(visitor);
+        }
     }
 }

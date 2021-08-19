@@ -1,4 +1,5 @@
 ﻿using Caritas.ServiceAPI.Context.Entities;
+using Caritas.ServiceAPI.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,5 +10,13 @@ namespace Caritas.ServiceAPI.Repositories.Interfaces
     public interface IUserRepository
     {
         Task<List<User>> List();
+
+        Task<User> Read(LoginModel loginModel);
+
+        Task<User> GetUser(int Id);
+
+        void Update(User user);
+
+        Task<int> Commit();
     }
 }

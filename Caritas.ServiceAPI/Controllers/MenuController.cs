@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using HttpResponse = Caritas.ServiceAPI.Helper.HttpResponse;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Caritas.ServiceAPI.Controllers
 {
@@ -31,6 +32,7 @@ namespace Caritas.ServiceAPI.Controllers
         /// <param name="UserID"></param>
         /// <returns></returns>
         [HttpGet("ListMenu")]
+        //[Authorize]
         public async Task<IActionResult> List(int UserID)
         {
             try

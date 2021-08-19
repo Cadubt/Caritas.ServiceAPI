@@ -10,5 +10,6 @@ namespace Caritas.ServiceAPI.Services.Interfaces
     public interface IVisitorService
     {
         Task<List<Visitor>> List(DateTime? visitDate);
+        Task<bool> Create(Visitor visitor);
     }
 }

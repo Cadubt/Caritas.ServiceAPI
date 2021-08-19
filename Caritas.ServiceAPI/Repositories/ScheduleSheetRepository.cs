@@ -13,6 +13,11 @@ namespace Caritas.ServiceAPI.Repositories
     {
         public ScheduleSheetRepository(CaritasContext db) : base(db) { }
 
+        public async Task Add(ScheduleSheet sheltered)
+        {
+            await db.ScheduleSheets.AddAsync(sheltered);
+        }
+
         public async Task<List<ScheduleSheet>> List()
         {
             return await db.ScheduleSheets
