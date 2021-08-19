@@ -17,5 +17,7 @@ namespace Caritas.ServiceAPI.Services.Interfaces
 
         Task<bool> Delete(int Id);
 
+        Task<User> GetUser(int Id);
+
     }
 }

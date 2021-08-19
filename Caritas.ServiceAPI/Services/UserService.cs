@@ -60,5 +60,12 @@ namespace Caritas.ServiceAPI.Services
         {
             throw new NotImplementedException();
         }
+
+        public async Task<User> GetUser(int Id)
+        {
+            User u = new User();
+            u = await _userRepo.GetUser(Id);
+            return u;
+        }
     }
 }

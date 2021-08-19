@@ -14,6 +14,15 @@ namespace Caritas.ServiceAPI.Repositories
     {
         public UserRepository(CaritasContext db) : base(db) { }
 
+        public async Task<User> GetUser(int Id)
+        {
+            return await db.Users.AsNoTracking()
+                .Where(e => e.Id == Id)
+                .DefaultIfEmpty()
+                .AsNoTracking()
+                .FirstAsync();
+        }
+
         public async Task<List<User>> List()
         {
             return await db.Users.AsNoTracking().ToListAsync();

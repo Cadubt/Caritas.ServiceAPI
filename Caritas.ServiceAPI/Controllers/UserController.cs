@@ -47,6 +47,24 @@ namespace Caritas.ServiceAPI.Controllers
         }
 
         /// <summary>
+        /// Responsible to get a registered user by Id
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet("GetUserById")]
+        //[Authorize]
+        public async Task<IActionResult> GetUser(int UserId)
+        {
+            try
+            {
+                return HttpResponse.Send(true, 200, await _userService.GetUser(UserId));
+            }
+            catch (AppException ex)
+            {
+                return HttpResponse.Send(false, ex.Code, null, ex.Message);
+            }
+        }
+
+        /// <summary>
         /// Responsible for Update a User
         /// </summary>
         /// <param name="user"></param>
