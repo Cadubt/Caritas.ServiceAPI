@@ -33,7 +33,7 @@ namespace Caritas.ServiceAPI.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet("ListUsers")]
-        //[Authorize]
+        [Authorize]
         public async Task<IActionResult> List()
         {
             try
@@ -51,7 +51,7 @@ namespace Caritas.ServiceAPI.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet("GetUserById")]
-        //[Authorize]
+        [Authorize]
         public async Task<IActionResult> GetUser(int UserId)
         {
             try
@@ -70,6 +70,7 @@ namespace Caritas.ServiceAPI.Controllers
         /// <param name="user"></param>
         /// <returns></returns>
         [HttpPut("Update")]
+        [Authorize]
         public async Task<IActionResult> Update(User user)
         {
             try
@@ -96,13 +97,14 @@ namespace Caritas.ServiceAPI.Controllers
 
 
             if (user == null)
-                return NotFound(new { message = "Usuário ou senha inválidos" });
+                return NotFound(new {StatusCode = 404, message = "Usuário ou senha inválidos" });
 
             var token = TokenService.GenerateToken(user);
+            user.Password = "";
 
             return new 
             { 
-                userEmail = user.Email,
+                user = user,
                 token = token
             };
 

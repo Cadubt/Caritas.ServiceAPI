@@ -7,6 +7,7 @@ using Caritas.ServiceAPI.Context.Entities;
 using Caritas.ServiceAPI.Helper;
 using Caritas.ServiceAPI.Models;
 using Caritas.ServiceAPI.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Caritas.ServiceAPI.Controllers
@@ -111,6 +112,7 @@ namespace Caritas.ServiceAPI.Controllers
         /// <param name="statusId">1 Active|2 Pending|3 Deceased</param>
         /// <returns></returns>
         [HttpGet("ListSheltereds")]
+        [Authorize(Roles = "1,2,3,4")]
         public async Task<IActionResult> List(int statusId)
         {
             try
