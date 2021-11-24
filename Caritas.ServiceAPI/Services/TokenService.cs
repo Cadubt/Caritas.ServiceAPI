@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
-using Caritas.ServiceAPI.Models;
 using Caritas.ServiceAPI.Context.Entities;
 
 namespace Caritas.ServiceAPI.Services

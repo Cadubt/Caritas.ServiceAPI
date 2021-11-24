@@ -7,6 +7,7 @@ using Caritas.ServiceAPI.Context.Entities;
 using Caritas.ServiceAPI.Helper;
 using Caritas.ServiceAPI.Models;
 using Caritas.ServiceAPI.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Caritas.ServiceAPI.Controllers
@@ -30,6 +31,7 @@ namespace Caritas.ServiceAPI.Controllers
         /// <param name="visitDate">If not used, method will return all results</param>
         /// <returns></returns>
         [HttpGet("ListVisitors")]
+        [Authorize]
         public async Task<IActionResult> List(DateTime? visitDate)
         {
             try
