@@ -18,10 +18,10 @@ namespace Caritas.ServiceAPI.Services
             _menuRepo = menuRepository;
         }
 
-        public async Task<List<Menu>> List(int UserID)
+        public async Task<List<Menu>> List(int UserRole)
         {
             List<Menu> menus = new List<Menu>();
-            menus = await _menuRepo.List(UserID);
+            menus = await _menuRepo.List(UserRole);
             return menus;
         }
     }

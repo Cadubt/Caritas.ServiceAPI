@@ -29,15 +29,15 @@ namespace Caritas.ServiceAPI.Controllers
         /// <summary>
         /// Responsible for obtaining a list of all menu items according his permission.
         /// </summary>
-        /// <param name="UserID"></param>
+        /// <param name="UserRole"></param>
         /// <returns></returns>
         [HttpGet("ListMenu")]
-        //[Authorize]
-        public async Task<IActionResult> List(int UserID)
+        [Authorize]
+        public async Task<IActionResult> List(int UserRole)
         {
             try
             {
-                return HttpResponse.Send(true, 200, await _menuService.List(UserID));                
+                return HttpResponse.Send(true, 200, await _menuService.List(UserRole));                
             }
             catch (AppException ex)
             {
