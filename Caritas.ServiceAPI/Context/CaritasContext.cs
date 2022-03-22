@@ -22,6 +22,8 @@ namespace Caritas.ServiceAPI.Context
         public DbSet<Permission> Permissions { get; set; }
         public DbSet<Permission_Menu> Permission_Menus { get; set; }
         public DbSet<Visitor> Visitors { get; set; }
+        public DbSet<GeneralSheltInfo> GeneralSheltInfos { get; set; }
+        public DbSet<Contact> Contacts { get; set; }
 
 
 
@@ -38,6 +40,8 @@ namespace Caritas.ServiceAPI.Context
             modelBuilder.Entity<Permission>().ToTable("Permissions", "usr");
             modelBuilder.Entity<Permission_Menu>().ToTable("Permission_Menus", "usr");
             modelBuilder.Entity<Visitor>().ToTable("Visitors", "shelt");
+            modelBuilder.Entity<GeneralSheltInfo>().ToTable("GeneralSheltInfos", "shelt");
+            modelBuilder.Entity<Contact>().ToTable("Contacts", "shelt");
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) { }

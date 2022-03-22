@@ -19,6 +19,66 @@ namespace Caritas.ServiceAPI.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("Caritas.ServiceAPI.Context.Entities.Contact", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Address");
+
+                    b.Property<string>("Kinship");
+
+                    b.Property<string>("Name");
+
+                    b.Property<string>("Neighborhood");
+
+                    b.Property<string>("Phone");
+
+                    b.Property<int?>("ShelteredId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ShelteredId");
+
+                    b.ToTable("Contact");
+                });
+
+            modelBuilder.Entity("Caritas.ServiceAPI.Context.Entities.GeneralSheltInfo", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("AnyOccurrence");
+
+                    b.Property<string>("ControlledMedicine");
+
+                    b.Property<string>("Disability");
+
+                    b.Property<bool>("Drinker");
+
+                    b.Property<bool>("FeedsItself");
+
+                    b.Property<bool>("GoOutAline");
+
+                    b.Property<bool>("HasMedicalTreatment");
+
+                    b.Property<string>("HealthProblem");
+
+                    b.Property<string>("HowMoves");
+
+                    b.Property<string>("MedicalInsurance");
+
+                    b.Property<bool>("Smoker");
+
+                    b.Property<string>("WhichHospital");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("GeneralSheltInfos","shelt");
+                });
+
             modelBuilder.Entity("Caritas.ServiceAPI.Context.Entities.Kinship", b =>
                 {
                     b.Property<int>("Id")
@@ -149,13 +209,23 @@ namespace Caritas.ServiceAPI.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<bool>("AcceptsToBeWelcomed");
+
                     b.Property<string>("Address");
 
                     b.Property<int>("Age");
 
+                    b.Property<string>("AnotherInstitutionName");
+
+                    b.Property<string>("ApprovalStatus");
+
+                    b.Property<bool>("BeenAnotherInstitution");
+
                     b.Property<DateTime>("BirthDate");
 
                     b.Property<string>("BloodTyping");
+
+                    b.Property<string>("City");
 
                     b.Property<DateTime?>("CreatedAt");
 
@@ -169,15 +239,33 @@ namespace Caritas.ServiceAPI.Migrations
                         .IsRequired()
                         .HasConversion(new ValueConverter<string, string>(v => default(string), v => default(string), new ConverterMappingHints(size: 1)));
 
+                    b.Property<int?>("GeneralSheltInfoId");
+
+                    b.Property<bool>("HasIncome");
+
+                    b.Property<string>("HowFindOutShelter");
+
+                    b.Property<string>("MaritalStatus");
+
                     b.Property<string>("Name");
+
+                    b.Property<string>("Nationality");
+
+                    b.Property<string>("Neighborhood");
 
                     b.Property<string>("PerfilImage");
 
                     b.Property<string>("Phone");
 
+                    b.Property<string>("ResidesIn");
+
+                    b.Property<string>("SourceOfIncome");
+
                     b.Property<int>("StatusId");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("GeneralSheltInfoId");
 
                     b.ToTable("Sheltereds","shelt");
                 });
@@ -241,6 +329,20 @@ namespace Caritas.ServiceAPI.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Visitors","shelt");
+                });
+
+            modelBuilder.Entity("Caritas.ServiceAPI.Context.Entities.Contact", b =>
+                {
+                    b.HasOne("Caritas.ServiceAPI.Context.Entities.Sheltered")
+                        .WithMany("Contact")
+                        .HasForeignKey("ShelteredId");
+                });
+
+            modelBuilder.Entity("Caritas.ServiceAPI.Context.Entities.Sheltered", b =>
+                {
+                    b.HasOne("Caritas.ServiceAPI.Context.Entities.GeneralSheltInfo", "GeneralSheltInfo")
+                        .WithMany()
+                        .HasForeignKey("GeneralSheltInfoId");
                 });
 #pragma warning restore 612, 618
         }
