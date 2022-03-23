@@ -35,13 +35,9 @@ namespace Caritas.ServiceAPI.Migrations
 
                     b.Property<string>("Phone");
 
-                    b.Property<int?>("ShelteredId");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("ShelteredId");
-
-                    b.ToTable("Contact");
+                    b.ToTable("Contacts","shelt");
                 });
 
             modelBuilder.Entity("Caritas.ServiceAPI.Context.Entities.GeneralSheltInfo", b =>
@@ -245,6 +241,8 @@ namespace Caritas.ServiceAPI.Migrations
 
                     b.Property<string>("HowFindOutShelter");
 
+                    b.Property<decimal>("IncomeAmount");
+
                     b.Property<string>("MaritalStatus");
 
                     b.Property<string>("Name");
@@ -329,13 +327,6 @@ namespace Caritas.ServiceAPI.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Visitors","shelt");
-                });
-
-            modelBuilder.Entity("Caritas.ServiceAPI.Context.Entities.Contact", b =>
-                {
-                    b.HasOne("Caritas.ServiceAPI.Context.Entities.Sheltered")
-                        .WithMany("Contact")
-                        .HasForeignKey("ShelteredId");
                 });
 
             modelBuilder.Entity("Caritas.ServiceAPI.Context.Entities.Sheltered", b =>

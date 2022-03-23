@@ -35,6 +35,7 @@ namespace Caritas.ServiceAPI.Context.Entities
         public DateTime? DeletedAt { get; set; }
         public string ApprovalStatus { get; set; }        
         public GeneralSheltInfo GeneralSheltInfo { get; set; }
+        public decimal IncomeAmount { get; set; }
 
     }
 }
