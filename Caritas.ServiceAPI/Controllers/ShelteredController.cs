@@ -33,6 +33,7 @@ namespace Caritas.ServiceAPI.Controllers
         /// <param name="sheltered"></param>
         /// <returns></returns>
         [HttpPost("Create")]
+        [Authorize(Roles = "1,2,3")]
         public async Task<IActionResult> Create(Sheltered sheltered)
         {
             try
@@ -113,11 +114,11 @@ namespace Caritas.ServiceAPI.Controllers
         /// <returns></returns>
         [HttpGet("ListSheltereds")]
         [Authorize(Roles = "1,2,3,4")]
-        public async Task<IActionResult> List(int statusId)
+        public async Task<IActionResult> List(int statusId, string approvalStatus)
         {
             try
             {
-                return HttpResponse.Send(true, 200, await _sheltService.List(statusId));
+                return HttpResponse.Send(true, 200, await _sheltService.List(statusId, approvalStatus));
             }
             catch (AppException ex)
             {

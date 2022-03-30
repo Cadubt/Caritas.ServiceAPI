@@ -73,10 +73,10 @@ namespace Caritas.ServiceAPI.Services
             return sheltered;
         }
 
-        public async Task<List<Sheltered>> List(int status)
+        public async Task<List<Sheltered>> List(int status, string approvalStatus)
         {
             List<Sheltered> sheltereds = new List<Sheltered>();
-            sheltereds = await _sheltRepo.List(status);
+            sheltereds = await _sheltRepo.List(status, approvalStatus);
             return sheltereds;
         }
 

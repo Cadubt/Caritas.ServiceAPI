@@ -9,7 +9,7 @@ namespace Caritas.ServiceAPI.Repositories.Interfaces
     public interface IShelteredRepository
     {
         Task Add(Sheltered sheltered);
-        Task<List<Sheltered>> List(int status);
+        Task<List<Sheltered>> List(int status, string approvalStatus);
         Task<int> Commit();
         void Update(Sheltered sheltered);
         Task<Sheltered> FindShelteredToUpdate(int id);

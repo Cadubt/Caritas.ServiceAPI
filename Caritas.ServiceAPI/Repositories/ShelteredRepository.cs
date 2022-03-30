@@ -19,12 +19,13 @@ namespace Caritas.ServiceAPI.Repositories
         {
             await db.Sheltereds.AddAsync(sheltered);
         }
-        public async Task<List<Sheltered>> List(int status)
+        public async Task<List<Sheltered>> List(int status, string approvalStatus)
         {
             return await db.Sheltereds
                 .AsNoTracking()
                 .Where(s => s.StatusId == status)
                 .Where(s => s.DeletedAt == null)
+                .Where(s => s.ApprovalStatus.ToUpper() == approvalStatus)
                 .ToListAsync();
         }
 

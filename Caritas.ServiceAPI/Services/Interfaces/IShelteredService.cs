@@ -13,7 +13,7 @@ namespace Caritas.ServiceAPI.Services.Interfaces
         Task<bool> Update(Sheltered sheltered);
         Task<bool> Delete(int Id);
         Task<Sheltered> Find(int Id);
-        Task<List<Sheltered>> List(int status);
+        Task<List<Sheltered>> List(int status, string approvalStatus);
         
 
     }

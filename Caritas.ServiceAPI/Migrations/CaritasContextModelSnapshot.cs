@@ -213,6 +213,8 @@ namespace Caritas.ServiceAPI.Migrations
 
                     b.Property<string>("AnotherInstitutionName");
 
+                    b.Property<string>("AnyOccurrence");
+
                     b.Property<string>("ApprovalStatus");
 
                     b.Property<bool>("BeenAnotherInstitution");
@@ -223,27 +225,43 @@ namespace Caritas.ServiceAPI.Migrations
 
                     b.Property<string>("City");
 
+                    b.Property<string>("ControlledMedicine");
+
                     b.Property<DateTime?>("CreatedAt");
 
                     b.Property<DateTime?>("DeceaseAt");
 
                     b.Property<DateTime?>("DeletedAt");
 
+                    b.Property<string>("Disability");
+
+                    b.Property<bool>("Drinker");
+
                     b.Property<DateTime>("EntryDate");
+
+                    b.Property<bool>("FeedsItself");
 
                     b.Property<string>("Gender")
                         .IsRequired()
                         .HasConversion(new ValueConverter<string, string>(v => default(string), v => default(string), new ConverterMappingHints(size: 1)));
 
-                    b.Property<int?>("GeneralSheltInfoId");
+                    b.Property<bool>("GoOutAline");
 
                     b.Property<bool>("HasIncome");
 
+                    b.Property<bool>("HasMedicalTreatment");
+
+                    b.Property<string>("HealthProblem");
+
                     b.Property<string>("HowFindOutShelter");
+
+                    b.Property<string>("HowMoves");
 
                     b.Property<decimal>("IncomeAmount");
 
                     b.Property<string>("MaritalStatus");
+
+                    b.Property<string>("MedicalInsurance");
 
                     b.Property<string>("Name");
 
@@ -257,13 +275,25 @@ namespace Caritas.ServiceAPI.Migrations
 
                     b.Property<string>("ResidesIn");
 
+                    b.Property<string>("ResponsibleAddress");
+
+                    b.Property<string>("ResponsibleKinship");
+
+                    b.Property<string>("ResponsibleName");
+
+                    b.Property<string>("ResponsibleNeighborhood");
+
+                    b.Property<string>("ResponsiblePhone");
+
+                    b.Property<bool>("Smoker");
+
                     b.Property<string>("SourceOfIncome");
 
                     b.Property<int>("StatusId");
 
-                    b.HasKey("Id");
+                    b.Property<string>("WhichHospital");
 
-                    b.HasIndex("GeneralSheltInfoId");
+                    b.HasKey("Id");
 
                     b.ToTable("Sheltereds","shelt");
                 });
@@ -327,13 +357,6 @@ namespace Caritas.ServiceAPI.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Visitors","shelt");
-                });
-
-            modelBuilder.Entity("Caritas.ServiceAPI.Context.Entities.Sheltered", b =>
-                {
-                    b.HasOne("Caritas.ServiceAPI.Context.Entities.GeneralSheltInfo", "GeneralSheltInfo")
-                        .WithMany()
-                        .HasForeignKey("GeneralSheltInfoId");
                 });
 #pragma warning restore 612, 618
         }
