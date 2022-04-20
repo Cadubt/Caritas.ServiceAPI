@@ -111,10 +111,11 @@ namespace Caritas.ServiceAPI.Controllers
         /// Responsible for obtaining a list of all registered shelters, with the required status.
         /// </summary>
         /// <param name="statusId">1 Active|2 Pending|3 Deceased</param>
+        /// <param name="approvalStatus"> 0 aprovado | 1 aguardando | 2 reprovado </param>
         /// <returns></returns>
         [HttpGet("ListSheltereds")]
         [Authorize(Roles = "1,2,3,4")]
-        public async Task<IActionResult> List(int statusId, string approvalStatus)
+        public async Task<IActionResult> List(int statusId, SheltApprovalStatusModel approvalStatus)
         {
             try
             {

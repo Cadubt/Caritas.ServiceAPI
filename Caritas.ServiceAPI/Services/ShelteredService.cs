@@ -1,5 +1,6 @@
 ﻿using Caritas.ServiceAPI.Context.Entities;
 using Caritas.ServiceAPI.Helper;
+using Caritas.ServiceAPI.Models;
 using Caritas.ServiceAPI.Repositories.Interfaces;
 using Caritas.ServiceAPI.Services.Interfaces;
 using Microsoft.Extensions.Configuration;
@@ -73,7 +74,7 @@ namespace Caritas.ServiceAPI.Services
             return sheltered;
         }
 
-        public async Task<List<Sheltered>> List(int status, string approvalStatus)
+        public async Task<List<Sheltered>> List(int status, SheltApprovalStatusModel approvalStatus)
         {
             List<Sheltered> sheltereds = new List<Sheltered>();
             sheltereds = await _sheltRepo.List(status, approvalStatus);

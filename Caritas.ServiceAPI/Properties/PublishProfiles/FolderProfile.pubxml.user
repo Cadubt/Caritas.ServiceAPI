@@ -7,6 +7,6 @@ by editing this MSBuild file. In order to learn more about this please visit htt
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
     <_PublishTargetUrl>C:\Users\cadub\Desktop\DeployFiles</_PublishTargetUrl>
-    <History>True|2022-01-13T23:56:29.3454874Z;False|2022-01-13T20:55:39.8989058-03:00;False|2022-01-13T20:54:38.4741434-03:00;False|2022-01-13T20:54:27.4420795-03:00;</History>
+    <History>True|2022-04-05T12:35:36.6658631Z;True|2022-04-05T09:34:58.1559052-03:00;True|2022-01-13T20:56:29.3454874-03:00;False|2022-01-13T20:55:39.8989058-03:00;False|2022-01-13T20:54:38.4741434-03:00;False|2022-01-13T20:54:27.4420795-03:00;</History>
   </PropertyGroup>
 </Project>
