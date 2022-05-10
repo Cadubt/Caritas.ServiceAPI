@@ -2,8 +2,8 @@
 {
     public enum SheltApprovalStatusModel
     {
-        aprovado,
-        aguardando,
-        reprovado
+        APROVADO,
+        XABLAU,
+        REPROVADO
     }
 }
